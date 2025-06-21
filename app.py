@@ -17,7 +17,7 @@ def indicators():
             return jsonify({'error': 'No data found for this ticker'}), 400
 
         # Explicitly ensure 1D Series
-        close = df["Close"]
+        close = df["Close"].squeeze()
         if isinstance(close, pd.DataFrame):
             return jsonify({'error': 'Close is a DataFrame, not Series'}), 500
 
