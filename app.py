@@ -20,7 +20,8 @@ def indicators():
         ema_26 = EMAIndicator(close, window=26).ema_indicator().iloc[-1]
         rsi = RSIIndicator(close, window=14).rsi().iloc[-1]
         stochrsi = StochRSIIndicator(close, window=14).stochrsi().iloc[-1]
-        macd = MACD(close).macd().iloc[-1]
+        macd = MACD(close=close, window_fast=12, window_slow=26, window_sign=9).macd().iloc[-1]
+
 
         return jsonify({
             'ticker': ticker,
