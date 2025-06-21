@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import yfinance as yf
 from ta.trend import EMAIndicator, MACD
 from ta.momentum import RSIIndicator, StochRSIIndicator
 import pandas as pd
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/api/indicators')
 def indicators():
